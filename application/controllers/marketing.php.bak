@@ -1,0 +1,24 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+
+class Marketing extends CI_Controller {
+    function __construct()   
+    {   
+        parent::__construct();        //load helper
+        $this->load->helper('url');   
+        $this->load->helper('form'); 
+        //load library  
+        $this->load->library('form_validation');  
+        //load model 
+        $this->load->model('model_informasi');
+        $this->load->model('CetakModel');   
+    }  
+    var $title = 'autocomplete';
+	
+     public function entry()
+    {
+        
+        $isi['data']            = $this->db->get('tbl_informasi');
+        $this->load->view('marketing/entry', $isi);
+    }
+}
